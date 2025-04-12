@@ -20,10 +20,21 @@ class PlaceItem extends StatelessWidget {
                     builder: (context) => PlacesDetailScreen(place: place),
                   ),
                 ),
-            child: Text(
-              place.title,
-              style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                color: Theme.of(context).colorScheme.onSurface,
+            child: Expanded(
+              child: Row(
+                children: [
+                  CircleAvatar(
+                    radius: 26,
+                    backgroundImage: FileImage(place.image),
+                  ),
+                  SizedBox(width: 20,),
+                  Text(
+                    place.title,
+                    style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                      color: Theme.of(context).colorScheme.onSurface,
+                    ),
+                  ),
+                ],
               ),
             ),
           ),
