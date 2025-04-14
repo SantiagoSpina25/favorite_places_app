@@ -9,37 +9,34 @@ class PlaceItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Padding(
-          padding: const EdgeInsets.all(12),
-          child: InkWell(
-            onTap:
-                () => Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => PlacesDetailScreen(place: place),
-                  ),
-                ),
-            child: Expanded(
-              child: Row(
-                children: [
-                  CircleAvatar(
-                    radius: 26,
-                    backgroundImage: FileImage(place.image),
-                  ),
-                  SizedBox(width: 20,),
-                  Text(
-                    place.title,
-                    style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                      color: Theme.of(context).colorScheme.onSurface,
-                    ),
-                  ),
-                ],
-              ),
+    return Padding(
+      padding: const EdgeInsets.all(12),
+      child: ListTile(
+        onTap: () {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => PlacesDetailScreen(place: place),
             ),
+          );
+        },
+        leading: CircleAvatar(
+          radius: 26,
+          backgroundImage: FileImage(place.image),
+        ),
+        title: Text(
+          place.title,
+          style: Theme.of(context).textTheme.titleMedium!.copyWith(
+            color: Theme.of(context).colorScheme.onSurface,
           ),
         ),
-      ],
+        subtitle: Text(
+          place.location.address,
+          style: Theme.of(context).textTheme.bodySmall!.copyWith(
+            color: Theme.of(context).colorScheme.onSurface,
+          ),
+        ),
+        contentPadding: EdgeInsets.zero,
+      ),
     );
   }
 }
